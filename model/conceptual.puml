@@ -1,0 +1,6 @@
+@startuml "Livl Weather"
+skinparam roundcorner 10
+
+hello -> weather : get weather
+
+@enduml
