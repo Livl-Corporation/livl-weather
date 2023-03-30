@@ -29,14 +29,15 @@ class Region {
 }
 
 class Code4677 {
+    {static}code
     description
 }
 
 Station "1" -- "0..*" Forecast : forecasts
-Station "1" -- "0..*" Region : located_in
+Station "1" -- "0..*" Region : located in
 
-Region "*" -- "0..*" Region : adjacent_to
+Region "*" -- "0..*" Region : adjacent to
 
-Forecast "1" -- "0..*" Code4677 : forecast_code
+Forecast "1" -- "0..*" Code4677 : weather code
 
 @enduml
