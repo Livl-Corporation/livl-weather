@@ -1,0 +1,15 @@
+indicatif OMM station,numer_sta,car,
+date (UTC),date,car,AAAAMMDDHHMISS
+pression au niveau mer,pmer,int,Pa
+direction du vent moyen 10mn,dd,int,degré
+vitesse du vent moyen 10mn,ff,réel,m/s
+température,t,réel,K
+humidité,u,int,%
+visibilité horizontale,vv,réel,mètre
+temps présent,ww,int,code (4677)
+pression station,pres,int,Pa
+niveau barométrique,niv_bar,int,Pa
+température minimale sur N heures,tnN,réel,K
+température maximale sur N heures,txN,réel,K
+"hauteur totale de la couche de neige, glace, autre, au sol",ht_neige,réel,mètre
+Précipitations dans les N dernières heures,rrN,réel,mm
