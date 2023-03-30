@@ -1,6 +1,42 @@
 @startuml "Livl Weather"
+
 skinparam roundcorner 10
 
-hello -> weather : get weather
+class Forecast {
+    date
+    windDirection
+    windSpeed
+    humidity
+    visibility
+    seaPressure
+    stationPressure
+    barometer
+    temperature
+    minTeperature
+    maxTemperature
+    groundLayerHeight
+    precipitation
+}
+
+class Station {
+    name
+    latitude
+    longitude
+}
+
+class Region {
+    name
+}
+
+class Code4677 {
+    description
+}
+
+Station "1" -- "0..*" Forecast : forecasts
+Station "1" -- "0..*" Region : located_in
+
+Region "*" -- "0..*" Region : adjacent_to
+
+Forecast "1" -- "0..*" Code4677 : forecast_code
 
 @enduml
