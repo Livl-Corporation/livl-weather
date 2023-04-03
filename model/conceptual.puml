@@ -38,6 +38,6 @@ Station "1" -- "0..*" Region : located in
 
 Region "*" -- "0..*" Region : adjacent to
 
-Forecast "1" -- "0..*" Code4677 : weather code
+Forecast "1" -- "0..*" Code4677 : weathercode
 
 @enduml
