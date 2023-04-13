@@ -1,69 +1,48 @@
-CREATE TABLE `Forecast` (
-  `stationId` INT NOT NULL,
-  `date` DATE NOT NULL,
-  `windDirection` INT(45) NULL,
-  `windSpeed` FLOAT NULL,
-  `humidity` INT NULL,
-  `visibility` FLOAT NULL,
-  `seaPressure` INT NULL,
-  `stationPressure` INT NULL,
-  `barometer` INT NULL,
-  `temperature` FLOAT NULL,
-  `minTemperature` FLOAT NULL,
-  `maxTemperature` FLOAT NULL,
-  `groundLayerHeight` FLOAT NULL,
-  `precipitation` FLOAT NULL,
-  `code4677` INT NOT NULL,
-  PRIMARY KEY (`stationId`, `date`),
-  CONSTRAINT `fk_Forecast_Code4677`
-    FOREIGN KEY (`code4677`)
-    REFERENCES `Code4677` (`code`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Forecast_Station`
-    FOREIGN KEY (`stationId`)
-    REFERENCES `Station` (`stationId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+CREATE TABLE Region (
+    regionId INT PRIMARY KEY,
+    name VARCHAR(255)
 );
 
-CREATE TABLE `Station` (
-  `stationId` INT NOT NULL,
-  `name` VARCHAR(45) NULL,
-  `latitude` FLOAT NULL,
-  `longitude` FLOAT NULL,
-  `altitude` FLOAT NULL,
-  `region` INT NOT NULL,
-  PRIMARY KEY (`stationId`),
-  CONSTRAINT `fk_Station_Region`
-    FOREIGN KEY (`region`)
-    REFERENCES `Region` (`regionId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+CREATE TABLE Station (
+    stationId INT PRIMARY KEY,
+    name VARCHAR(255),
+    latitude FLOAT,
+    longitude FLOAT,
+    altitude FLOAT,
+    region INT,
+    FOREIGN KEY (region) REFERENCES Region(regionId)
 );
 
-CREATE TABLE `Region` (
-  `regionId` INT NOT NULL,
-  `name` VARCHAR(45) NULL,
-  PRIMARY KEY (`regionId`)
+CREATE TABLE Code4677 (
+    code INT PRIMARY KEY,
+    description VARCHAR(255)
 );
 
-CREATE TABLE `AdjacentRegion` (
-  `regionId` INT NOT NULL,
-  `adjacentRegionId` INT NOT NULL,
-  PRIMARY KEY (`regionId`, `adjacentRegionId`),
-  CONSTRAINT `fk_AdjacentRegion_Region1`
-    FOREIGN KEY (`regionId`)
-    REFERENCES `Region` (`regionId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_AdjacentRegion_Region2`
-    FOREIGN KEY (`adjacentRegionId`)
-    REFERENCES `Region` (`regionId`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION
+CREATE TABLE Forecast (
+    stationId INT,
+    date DATE,
+    windDirection FLOAT,
+    windSpeed FLOAT,
+    humidity FLOAT,
+    visibility FLOAT,
+    seaPressure FLOAT,
+    stationPressure FLOAT,
+    barometer FLOAT,
+    temperature FLOAT,
+    minTemperature FLOAT,
+    maxTemperature FLOAT,
+    groundLayerHeight FLOAT,
+    precipitation FLOAT,
+    code4677 INT,
+    PRIMARY KEY (stationId, date),
+    FOREIGN KEY (stationId) REFERENCES Station(stationId),
+    FOREIGN KEY (code4677) REFERENCES Code4677(code)
 );
 
-CREATE TABLE `Code4677` (
-  `code` INT NOT NULL,
-  `description` VARCHAR(45) NULL
+CREATE TABLE AdjacentRegion (
+    regionId INT,
+    adjacentRegionId INT,
+    PRIMARY KEY (regionId, adjacentRegionId),
+    FOREIGN KEY (regionId) REFERENCES Region(regionId),
+    FOREIGN KEY (adjacentRegionId) REFERENCES Region(regionId)
+);
