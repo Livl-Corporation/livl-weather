@@ -34,10 +34,10 @@ class Code4677 {
 }
 
 Station "1" -- "0..*" Forecast : forecasts
-Station "1" -- "0..*" Region : located in
+Station "0..*" -- "1" Region : located in
 
 Region "*" -- "0..*" Region : adjacent to
 
-Forecast "1" -- "0..*" Code4677 : weathercode
+Forecast "0..*" -- "1" Code4677 : weathercode
 
 @enduml
