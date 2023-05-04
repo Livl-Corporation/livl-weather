@@ -1,3 +1,5 @@
+CREATE DATABASE Weather;
+
 CREATE TABLE Region (
     regionId INT PRIMARY KEY,
     name VARCHAR(255)
