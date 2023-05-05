@@ -1,6 +1,6 @@
 # Livl Weather 🌤️
 
-Modeling a wheather forecasts database 🌦️
+Modeling a weather forecasts database 🌦️
 
 ## **Table of contents**
 
@@ -51,9 +51,9 @@ First, the script skip the first line of the file (the header). Then, it uses th
 ### **Conceptual diagram**
 
 The conceptual diagram contains the following entities :
-- `Forecast` contains the forecast for a given day. We decided to only use the most useful attributes to work with such as the wind preassure/direction, the temperature (min/max), and so on. 
+- `Forecast` contains the forecast for a given day. We decided to only use the most useful attributes to work with such as the wind pressure/direction, the temperature (min/max), and so on. 
 - `Station` 
-- `Region` has a one to many relationship with `Station` since a region can have many stations. And there is a many to many relationship with itself to represent the fact that a region can have many neighbors.
+- `Region` has a one to many relationship with `Station` since a region can have many stations. There is also a many to many relationship with itself to represent the fact that a region can have many neighbours.
 - `Code4677` contains the description of each different kind of forecast. The attribute `code` is the primary key of this table since it is unique. 
 
 <img src="model/conceptual.png" width="300" />
